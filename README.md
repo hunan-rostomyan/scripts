@@ -1,4 +1,4 @@
-### Killing a dev server running on the specified port
+### 1. Killing a dev server running on a specified port
 ```bash
 # Usage: "kill-server 8005"
 function kill-server() {
@@ -12,7 +12,7 @@ function kill-server() {
 	fi
 }
 ```
-#### Example
+##### Example session
 ```bash
 # SSH into the dev machine
 $ sshwt
