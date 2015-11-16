@@ -1,4 +1,4 @@
-### 1. Killing a dev server running on a specified port
+### 1. Kill a dev server running on a specified port
 ```bash
 # Usage: "kill-server 8005"
 function kill-server() {
@@ -29,4 +29,23 @@ $ ./dev 8005 &> /dev/null &
 # Re-attempt to kill the server
 $ kill-server 8005
 $ The server is dead. Long live the server!
+```
+
+### 2. Listing recent branches you've been on.
+
+##### Heuristic 1
+```bash
+# Get the entire reflog,
+#   filter in branch transitions, selecting the 'from' branch,
+#   filter in the first 60 lines,
+#   sort them and eliminate duplicates.
+$ git reflog | awk '/from/ {print $6}' | sed -n '1,60p' | sort | uniq
+```
+
+##### Heuristic 2
+```bash
+# Get the first 200 entries from reflog,
+#   filter in branch transitions, selecting the 'from' branch,
+#   sort them and eliminate duplicates.
+$ git reflog -200 | awk '/from/ {print $6}' | sort | uniq
 ```
